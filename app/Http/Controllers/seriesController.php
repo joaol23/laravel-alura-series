@@ -38,8 +38,9 @@ class seriesController extends Controller
     {
 
         $coverPath = $request->hasFile('cover')
-            ?? $request->file('cover')
-            ->store('series_cover', 'public');
+            ? $request->file('cover')
+            ->store('series_cover', 'public') : '';
+            
         $request->coverPath = $coverPath;
         $serie = $seriesRepository->add($request);
 
